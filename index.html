@@ -197,6 +197,23 @@
             color: white;
         }
 
+        /* Home area: Time of Day styling */
+        #timeofday {
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            padding: 1em 0;
+            background: linear-gradient(0deg, rgba(251,215,139,1) 0%, rgba(118,213,245,1) 100%);
+        }
+
+        #timeofday span {
+            color: #3a3a3a;
+        }
+
+        #timeofday span#clock {
+            color: #125688;
+            font-weight: bold;
+        }
+
     </style>
 
 </head>
@@ -414,13 +431,13 @@
 
             //Display current local time and time zone on HTML elements
             document.getElementById("clock").innerText = time; //adding time
-
-            //Run time data function every 1 second
-            setInterval(currentTime, 1000); //setting timer
         }
 
         //Initial run of time data function
         currentTime();
+
+        //Run time data function every 1 second
+        setInterval(currentTime, 1000); //setting timer
 
     </script>
 
