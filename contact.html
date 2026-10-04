@@ -213,6 +213,36 @@
             border-radius: 4px;
         }
 
+        form .commentbox textarea {
+            width: 100%;
+            height: 100px;
+            padding: 0.6em;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        form .randomcode {
+            margin-top: 1em;
+            display: flex;
+            align-items: center;
+            gap: 1em;
+        }
+
+        form .randomcode input[type="text"] {
+            width: auto;
+            flex: 1;
+        }
+
+        form .randomcode #codes {
+            background-color: #ccc;
+            padding: 0.5em 1em;
+            font-weight: bold;
+            border-radius: 4px;
+            margin: 0;
+        }
+
         form .button input {
             width: 8em;
             height: 2.5em;
@@ -292,6 +322,21 @@
 
             <label for="email">Email:</label>
             <input type="email" id="email" name="email">
+
+            <div class="commentbox">
+                <label>How did you hear about us:</label>
+                <textarea></textarea>
+            </div>
+
+            <!--Random Codes-->
+            <div class="randomcode">
+                <input type="text" name="randomcode" placeholder="Enter characters">
+                <p id="codes"></p>
+            </div>
+
+            <div class="button">
+                <input type="submit" id="submit" value="Inquire">
+            </div>
 
         </form>
 
