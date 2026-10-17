@@ -2,8 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Great Cliffs of California</title>
+
+    <!-- Bootstrap 4 CSS -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    >
 
     <!-- Font Awesome -->
     <link
@@ -11,198 +18,130 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     >
 
-    <!-- Embed Style Method -->
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #222;
+        }
+
+        /* Header and hero background */
         header {
             width: 100%;
             min-height: 400px;
             padding-top: 3em;
-        }
-
-        #home header {
-            background: no-repeat lightgrey url(images/cliff_ocean.jpeg);
-            background-size: 1500px;
+            background: lightgrey url("images/cliff_ocean.jpeg")
+                no-repeat center center;
+            background-size: cover;
+            background-position: center;
         }
 
         .main-header {
-            background-color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: stretch;
             width: 700px;
-            margin: 2em auto 0 auto;
+            max-width: 100%;
             min-height: 100px;
+            height: 100px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.85);
+        }
+
+        /* Logo */
+        .main-header .logo {
+            flex: 0 0 150px;
+            width: 150px;
             height: 100px;
         }
 
         .main-header .logo img {
-            width: 100px;
+            display: block;
+            width: 150px;
             height: 100px;
-            margin: 0 20px 0 0;
-            float: left;
-        }
-
-        .main-menu {
-            margin-left: 227px;
-            font-weight: 400;
-        }
-
-        .main-menu ul {
             margin: 0;
+            object-fit: contain;
+        }
+
+        /* Navigation */
+        .main-menu {
+            flex: 1;
+            min-width: 0;
+            margin-left: 0;
+        }
+
+        .main-menu .navbar {
+            width: 100%;
+            height: 100%;
+            min-height: 100px;
             padding: 0;
         }
 
-        .main-menu ul li {
-            list-style-type: none;
-            display: inline-block;
-            float: left;
-            padding-left: 25px;
-            padding-right: 25px;
+        .main-menu .navbar-collapse {
+            width: 100%;
+            height: 100%;
+        }
+
+        .main-menu .navbar-nav {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: 100%;
+        }
+
+        .main-menu .nav-item {
+            flex: 1 1 0;
+            min-width: 0;
             border-left: 1px solid rgba(202, 204, 202, 0.6);
-            line-height: 100px;
-            text-transform: uppercase;
+        }
+
+        .main-menu .nav-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100px;
+            padding: 0 8px;
+            color: #555;
             font-size: 14px;
+            white-space: nowrap;
+            text-transform: uppercase;
         }
 
-        .main-menu ul li:first-child {
-            border-left: none;
-        }
-
-        .main-menu ul li a {
-            text-decoration: none;
-            color: #000;
-        }
-
-        .main-menu ul li a:hover {
+        .main-menu .nav-link:hover {
             color: #9ed034;
         }
 
-        .main-menu ul li.active {
-            background: #9ed034;
-            border: none;
+        .main-menu .nav-item.active {
+            background-color: #9ed034;
         }
 
-        .main-menu ul li.active a {
+        .main-menu .nav-item.active .nav-link {
             color: #fff;
         }
 
-        main {
-            width: 1200px;
-            margin: 0 auto;
-            font-family: Arial, Helvetica, sans-serif;
+        .navbar-toggler {
+            margin: 20px;
+            border: 1px solid #ccc;
         }
 
-        main h1 {
-            color: #9ed034;
-            font-size: 2em;
-            margin-top: 2em;
-            margin-bottom: 1em;
+        .navbar-toggler:focus {
+            outline: 2px solid #9ed034;
         }
 
-        main h2 {
-            color: #000;
-            font-size: 1.25em;
-            margin-top: 1.5em;
-            margin-bottom: 1em;
-        }
-
-        main p {
-            color: #333;
-            font-size: 0.9em;
-            line-height: 1.5;
-        }
-
-        section {
-            width: 100%;
-            background-color: #4288c3;
-        }
-
-        section#partners {
-            width: 1200px;
-            padding: 2em 0 2em 0;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        section#partners .partner {
-            display: inline-block;
-            margin: 0 0.75em;
-            padding: 1.3em 1.5em;
-            background-color: #fff;
-            border-radius: 50%;
-        }
-
-        section#partners .partner img {
-            width: 90px;
-            height: 90px;
-        }
-
-        footer {
-            width: 100%;
-            height: 155px;
-            padding-bottom: 1em;
-            background-color: #ecfab8;
-        }
-
-        footer #disclaimer {
-            font-size: 0.85em;
-            text-align: center;
-        }
-
-        footer #disclaimer .copy {
-            padding: 3.5em 3.5em 3.5em 13em;
-            float: left;
-            font-size: 0.9em;
-        }
-
-        footer #disclaimer .social {
-            padding: 2.5em;
-            margin-right: 9.25em;
-            float: right;
-        }
-
-        footer #disclaimer {
-            clear: both;
-        }
-
-        footer #disclaimer p {
-            font-size: 0.85em;
-            text-align: center;
-        }
-
-        footer #disclaimer .social a {
-            padding: 15px;
-            font-size: 15px;
-            width: 15px;
-            text-align: center;
-            text-decoration: none;
-            margin: 0 4px;
-            border-radius: 50%;
-            display: inline-block;
-        }
-
-        footer #disclaimer .social a:hover {
-            opacity: 0.7;
-        }
-
-        footer #disclaimer .social .fa-facebook {
-            background: #3b5998;
-            color: white;
-        }
-
-        footer #disclaimer .social .fa-twitter {
-            background: #55acee;
-            color: white;
-        }
-
-        footer #disclaimer .social .fa-instagram {
-            background: #125688;
-            color: white;
-        }
-
-        /* Home area: Time of Day styling */
+        /* Digital clock */
         #timeofday {
-            font-family: Arial, Helvetica, sans-serif;
+            padding: 1em;
             text-align: center;
-            padding: 1em 0;
-            background: linear-gradient(0deg, rgba(251,215,139,1) 0%, rgba(118,213,245,1) 100%);
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(
+                0deg,
+                rgba(251, 215, 139, 1) 0%,
+                rgba(118, 213, 245, 1) 100%
+            );
         }
 
         #timeofday span {
@@ -214,18 +153,259 @@
             font-weight: bold;
         }
 
+        /* Main content */
+        main {
+            padding: 2.5em 0 4em;
+        }
+
+        main h1 {
+            margin: 0 0 1em;
+            color: #9ed034;
+            font-size: 2em;
+            text-align: center;
+        }
+
+        main h2 {
+            margin: 0 0 1em;
+            color: #222;
+            font-size: 1.5em;
+            text-align: center;
+        }
+
+        main p {
+            color: #333;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .content-box {
+            height: 100%;
+            min-height: 350px;
+            padding: 1.5em;
+            border: 1px solid #ccc;
+        }
+
+        /* Partners */
+
+        section#partners {
+            width: 100%;
+            padding: 2em 0;
+            background-color: #4288c3;
+        }
+
+        /* Circular logo container */
+        section#partners .partner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: 140px;
+            height: 140px;
+            max-width: 100%;
+
+            margin: 0 auto 1em;
+            padding: 0;
+
+            background-color: #fff;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        /* Partner images */
+        section#partners .partner img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            max-width: 100%;
+
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        /* Extra-small screens */
+        @media (max-width: 575.98px) {
+            section#partners .partner {
+                width: 110px;
+                height: 110px;
+            }
+        }
+
+        /* Footer */
+        footer {
+            width: 100%;
+            padding: 1.5em 0;
+            background-color: #ecfab8;
+        }
+
+        footer #disclaimer {
+            text-align: center;
+            font-size: 0.85em;
+        }
+
+        footer #disclaimer .copy,
+        footer #disclaimer .social {
+            padding: 1.5em 0;
+        }
+
+        footer #disclaimer .copy p {
+            margin: 0;
+            font-size: 1em;
+        }
+
+        footer #disclaimer .social a {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            margin: 0 4px;
+            padding: 10px;
+            border-radius: 50%;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        footer #disclaimer .social a:hover {
+            opacity: 0.7;
+        }
+
+        footer #disclaimer .social .fa-facebook {
+            background: #3b5998;
+        }
+
+        footer #disclaimer .social .fa-twitter {
+            background: #55acee;
+        }
+
+        footer #disclaimer .social .fa-instagram {
+            background: #125688;
+        }
+
+        footer #disclaimer .disclaimer-text {
+            margin: 1em 0 0;
+            line-height: 1.5;
+        }
+
+        /* Tablet and mobile navigation */
+        @media (max-width: 991.98px) {
+            header {
+                min-height: 330px;
+                padding-top: 2em;
+            }
+
+            .main-header {
+                width: 80%;
+                min-height: 100px;
+            }
+
+            .main-header .logo img {
+                margin-right: 0;
+            }
+
+            .main-menu {
+                margin-left: 0;
+            }
+
+            .main-menu .navbar {
+                min-height: 100px;
+                justify-content: flex-end;
+            }
+
+            .main-menu .navbar-nav {
+                position: absolute;
+                z-index: 1000;
+                top: 100%;
+                right: 0;
+                width: 210px;
+                background: #fff;
+                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+            }
+
+            .main-menu .navbar-collapse {
+                position: absolute;
+                top: 100px;
+                right: 0;
+                width: 210px;
+                z-index: 1000;
+            }
+
+            .main-menu .nav-item {
+                border-left: none;
+                border-bottom: 1px solid #ddd;
+            }
+
+            .main-menu .nav-link {
+                min-height: 65px;
+                justify-content: flex-start;
+                padding: 0 20px;
+            }
+
+            .content-box {
+                min-height: 350px;
+            }
+        }
+
+        /* Extra-small screens */
+        @media (max-width: 575.98px) {
+            header {
+                min-height: 300px;
+                padding-top: 1.5em;
+                background-position: center;
+            }
+
+            .main-header {
+                width: 85%;
+            }
+
+            .main-header .logo img {
+                width: 85px;
+                height: 100px;
+            }
+
+            .main-menu .navbar {
+                min-height: 100px;
+            }
+
+            .main-menu .navbar-collapse {
+                top: 100px;
+            }
+
+            main {
+                padding: 2em 0;
+            }
+
+            main h1 {
+                font-size: 1.8em;
+                margin-bottom: 1em;
+            }
+
+            main h2 {
+                font-size: 1.35em;
+            }
+
+            .content-box {
+                min-height: 0;
+                padding: 1.25em;
+            }
+
+            section#partners .partner {
+                width: 110px;
+                height: 110px;
+            }
+
+            footer #disclaimer .copy,
+            footer #disclaimer .social {
+                padding: 0.75em 0;
+            }
+        }
     </style>
-
 </head>
-
 
 <body id="home">
 
+    <!-- Header and navigation -->
     <header>
+        <div class="main-header clearfix">
 
-        <div class="main-header">
-
-            <!-- Logo -->
             <div class="logo">
                 <a href="index.html">
                     <img
@@ -235,164 +415,202 @@
                 </a>
             </div>
 
+            <div class="main-menu">
+                <nav class="navbar navbar-expand-lg navbar-light">
 
-            <!-- Navigation -->
-            <nav class="main-menu">
+                    <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#mainNavigation"
+                        aria-controls="mainNavigation"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                    >
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-                <ul>
+                    <div
+                        class="collapse navbar-collapse"
+                        id="mainNavigation"
+                    >
+                        <ul class="navbar-nav">
 
-                    <li class="active">
-                        <a href="index.html">Home</a>
-                    </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="index.html">
+                                    Home
+                                </a>
+                            </li>
 
-                    <li>
-                        <a href="cliffs.html">Cliffs</a>
-                    </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="cliffs.html">
+                                    Cliffs
+                                </a>
+                            </li>
 
-                    <li>
-                        <a href="activities.html">Activities</a>
-                    </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="activities.html">
+                                    Activities
+                                </a>
+                            </li>
 
-                    <li>
-                        <a href="contact.html">Contact</a>
-                    </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="contact.html">
+                                    Contact
+                                </a>
+                            </li>
 
-                </ul>
-
-            </nav>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
 
         </div>
-
     </header>
 
+    <!-- Digital clock -->
     <section id="timeofday">
         <span>Your Current Local Time: </span>
         <span id="clock"></span>
     </section>
 
+    <!-- Main content -->
     <main>
+        <div class="container">
 
-        <h1>Introducing California's Greatest Cliffs</h1>
+            <h1>Introducing California's Greatest Cliffs</h1>
 
+            <div class="row">
 
-        <h2>What is so unique about California cliffs?</h2>
+                <div class="col-12 col-sm-6 mb-4 mb-sm-0">
+                    <div class="content-box">
+                        <h2>What is so unique about California cliffs?</h2>
 
-        <p>
-            California cliffs are one of a kind in the United States where no
-            cliffs are as magnificent and beautiful as them. And California
-            is the only state that have cliffs that stands on both Pacific
-            Ocean and mountain ranges. There are four such individual unique
-            cliffs: West Cliff, North Cliff, East Cliff and South Cliff.
-            All offer fantastic exploring views, recreational areas, camping
-            sites, wildlife spots and overnight cabins.
-        </p>
+                        <p>
+                            California cliffs are one of a kind in the
+                            United States where no cliffs are as magnificent
+                            and beautiful as them. And California is the only
+                            state that have cliffs that stands on both
+                            Pacific Ocean and mountain ranges. There are four
+                            such individual unique cliffs: West Cliff, North
+                            Cliff, East Cliff and South Cliff. All offer
+                            fantastic exploring views, recreational areas,
+                            camping sites, wildlife spots and overnight
+                            cabins.
+                        </p>
+                    </div>
+                </div>
 
+                <div class="col-12 col-sm-6">
+                    <div class="content-box">
+                        <h2>Where are these cliffs?</h2>
 
-        <h2>Where are these cliffs?</h2>
+                        <p>
+                            Located within a 100 mile radius from Irvine,
+                            California, they can be reached by roads easily.
+                            The closest cliff to Irvine is West Cliff, which
+                            is the most popular and most visited.
+                        </p>
+                    </div>
+                </div>
 
-        <p>
-            Located within a 100 mile radius from little, California, they can
-            be reached by roads easily. The closest cliff to have is West Cliff,
-            which is the most popular and most visited.
-        </p>
-
+            </div>
+        </div>
     </main>
 
+    <!-- Partners: 1 on XS, 2 on SM, 3 on MD, 6 on LG and above -->
     <section id="partners">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
 
-        <div class="partner">
-            <img
-                src="images/partners/partner-bustour.png"
-                alt="Partner Bus Tours"
-            >
+                <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+                    <div class="partner">
+                        <img src="images/partners/partner-bustour.png"
+                             alt="Partner Bus Tours">
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+                    <div class="partner">
+                        <img src="images/partners/partner-cabinrental.jpg"
+                             alt="Partner Cabin Rental">
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+                    <div class="partner">
+                        <img src="images/partners/partner-campingadv.png"
+                             alt="Partner Camping Adventure">
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+                    <div class="partner">
+                        <img src="images/partners/partner-collegetours.jpg"
+                             alt="Partner College Tours">
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+                    <div class="partner">
+                        <img src="images/partners/partner-rentabike.png"
+                             alt="Partner Bike Rentals">
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+                    <div class="partner">
+                        <img src="images/partners/partner-tourgroup.jpg"
+                             alt="Partner Tour Group">
+                    </div>
+                </div>
+
+            </div>
         </div>
-
-        <div class="partner">
-            <img
-                src="images/partners/partner-cabinrental.jpg"
-                alt="Partner Cabin Rental"
-            >
-        </div>
-
-        <div class="partner">
-            <img
-                src="images/partners/partner-campingadv.png"
-                alt="Partner Camping Adventure"
-            >
-        </div>
-
-        <div class="partner">
-            <img
-                src="images/partners/partner-collegetours.jpg"
-                alt="Partner College Tours"
-            >
-        </div>
-
-        <div class="partner">
-            <img
-                src="images/partners/partner-rentabike.png"
-                alt="Partner Bike Rentals"
-            >
-        </div>
-
-        <div class="partner">
-            <img
-                src="images/partners/partner-tourgroup.jpg"
-                alt="Partner Tour Group"
-            >
-        </div>
-
     </section>
 
+    <!-- Footer -->
     <footer>
+        <div class="container" id="disclaimer">
 
-        <div id="disclaimer">
+            <div class="row align-items-center">
 
+                <div class="col-12 col-md-6 copy">
+                    <p>&copy; Copyright 2020 - GreatCliffs.com</p>
+                </div>
 
-            <!-- Copyright -->
-            <div class="copy">
+                <div class="col-12 col-md-6 social">
+                    <a href="#" class="fa fa-facebook"
+                       aria-label="Facebook"></a>
 
-                <p>
-                    &copy; Copyright 2020 - GreatCliffs.com
-                </p>
+                    <a href="#" class="fa fa-instagram"
+                       aria-label="Instagram"></a>
 
-            </div>
-
-
-            <!-- Social Media -->
-            <div class="social">
-
-                <a href="#" class="fa fa-facebook" aria-label="Facebook"></a>
-
-                <a href="#" class="fa fa-instagram" aria-label="Instagram"></a>
-
-                <a href="#" class="fa fa-twitter" aria-label="Twitter"></a>
+                    <a href="#" class="fa fa-twitter"
+                       aria-label="Twitter"></a>
+                </div>
 
             </div>
 
-
-            <!-- Disclaimer -->
-            <p>
+            <p class="disclaimer-text">
                 This website is designed and created only for educational
                 purposes as a part of Westcliff University.
                 All rights are reserved.
             </p>
 
         </div>
-
     </footer>
 
+    <!-- jQuery, Popper.js and Bootstrap 4 JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
 
-    <!-- Digital Clock -->
+    <!-- Existing digital clock -->
     <script src="js/digclock.js"></script>
 
-    <!-- Partners -->
+    <!-- Existing partner scripts -->
     <script src="js/site_scripts.js"></script>
-
-
-    <script>
-
-    </script>
 
 </body>
 </html>
