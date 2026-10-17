@@ -1,74 +1,95 @@
+"use strict";
 // ----- RANDOM CODES -----
 
-var code = '';
-var getCode = '';
-var btnvalue;
+var code = "";
+var getCode = "";
 
 // Character set used to generate random codes
-var str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+var str =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$";
 
-//Function to generate combination of characters
+// Generate a combination of 8 random characters
 function generateCode() {
-    //Create variables to store generated codes and the type of characters we want to show as codes
-    var code = ''; //initialize to null value
-    var str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$';
+    var generatedCode = "";
+    var characters =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$";
 
-    //Generate character multiple times using a loop
-    for (i = 1; i <= 8; i++) {
-        var char = Math.random() * str.length; //random select a character from the variable and then store in a new variable
-        code += str.charAt(char); //accumulate the generated character into a string of 8 characters
+    for (var i = 0; i < 8; i++) {
+        var char = Math.floor(Math.random() * characters.length);
+        generatedCode += characters.charAt(char);
     }
 
-    return code; //return the final accumulated string when loop ends
+    return generatedCode;
 }
 
-//Get HTML element to display
-document.getElementById("codes").innerHTML = generateCode();
+// Display the generated code
+var codesElement = document.getElementById("codes");
+var submitButton = document.getElementById("submit");
+var codebox = document.getElementById("codeentered");
 
-//Disable Button
-// Determine when to enable or disable the button
+// Store the generated code globally so it can be validated
+code = generateCode();
+codesElement.textContent = code;
+
+// Enable or disable the submit button
 function disableButton(btnvalue) {
-    document.getElementById("submit").disabled = btnvalue;
+    submitButton.disabled = btnvalue;
 
     if (btnvalue === true) {
-        // Set button and label color translucent
-        document.getElementById("submit").style.backgroundColor =
+        submitButton.style.backgroundColor =
             "rgba(73, 119, 209, 0.3)";
 
-        document.getElementById("submit").style.color =
+        submitButton.style.color =
             "rgba(255, 255, 255, 0.5)";
     } else {
-        // Set button and label color without transparency
-        document.getElementById("submit").style.backgroundColor =
+        submitButton.style.backgroundColor =
             "rgba(73, 119, 209, 1)";
 
-        document.getElementById("submit").style.color =
+        submitButton.style.color =
             "rgba(255, 255, 255, 1)";
     }
 }
 
-// Listen to user input code
-var codebox = document.getElementById("codeentered");
-
-codebox.addEventListener("input", evaluateCode);
-
-// Run function when user enters a character in the textbox
+// Validate the code entered by the user
 function evaluateCode() {
-    // Get the code entered by the user
-    getCode = document.getElementById("codeentered").value;
+    getCode = codebox.value.trim();
 
-    // Remove any hidden characters
-    var charset1 = getCode.trim();
-    var charset2 = code.trim();
-
-    // Test whether the entered code matches the generated code
-    if (charset1.length === charset2.length &&
-        charset1 === charset2) {
+    if (getCode === code) {
         disableButton(false);
     } else {
         disableButton(true);
     }
 }
 
-//Activate function
-disableButton();
+// Listen for user input
+codebox.addEventListener("input", evaluateCode);
+
+// ----- CONDITIONAL CONTACT FIELDS -----
+
+var contactMethod = document.getElementById("contactMethod");
+var emailField = document.getElementById("emailField");
+var phoneField = document.getElementById("phoneField");
+
+var contactEmail = document.getElementById("contactEmail");
+var contactPhone = document.getElementById("contactPhone");
+
+// Show the input field corresponding to the selected option
+function showContactField() {
+    // Hide both fields first
+    emailField.hidden = true;
+    phoneField.hidden = true;
+
+    // Only show the selected field
+    if (contactMethod.value === "email") {
+        emailField.hidden = false;
+    } else if (contactMethod.value === "phone") {
+        phoneField.hidden = false;
+    }
+}
+
+// Listen for dropdown selection changes
+contactMethod.addEventListener("change", showContactField);
+
+// Initialize the page
+disableButton(true);
+showContactField();
