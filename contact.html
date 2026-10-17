@@ -255,12 +255,38 @@
             cursor: pointer;
         }
 
+        form select {
+            width: 100%;
+            padding: 0.6em;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 0.5em;
+        }
+
+        form .contact-field {
+            margin-top: 0.5em;
+        }
+
+        form .contact-field input {
+            width: 100%;
+            padding: 0.6em;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        /* Keep conditional fields hidden until an option is selected */
+        form .contact-field[hidden] {
+            display: none;
+        }
+
     </style>
 
 </head>
 
 
-<body id="contact" onload="disableButton(true)">
+<body id="contact">
 
     <header>
 
@@ -315,26 +341,52 @@
             Fill out the form below and we'll get back to you.
         </p>
 
+
         <form>
-
             <label for="name">Name:</label>
-            <input type="text" id="name" name="name">
+            <input type="text" id="name" name="name" required>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email">
+            <!-- Contact preference dropdown -->
+            <label for="contactMethod">How should we contact you?</label>
+            <select id="contactMethod" name="contactMethod">
+                <option id="optionDefault" value="">Select One</option>
+                <option id="optionEmail" value="email">Email</option>
+                <option id="optionPhone" value="phone">Phone</option>
+            </select>
 
-            <div class="commentbox">
-                <label>How did you hear about us:</label>
-                <textarea></textarea>
+            <!-- Email field: hidden initially -->
+            <div id="emailField" class="contact-field" hidden>
+                <label for="contactEmail">Enter your email:</label>
+                <input
+                    type="email"
+                    id="contactEmail"
+                    name="contactEmail"
+                >
             </div>
 
-            <!--Random Codes-->
+            <!-- Phone field: hidden initially -->
+            <div id="phoneField" class="contact-field" hidden>
+                <label for="contactPhone">Enter your phone:</label>
+                <input
+                    type="tel"
+                    id="contactPhone"
+                    name="contactPhone"
+                >
+            </div>
+
+            <div class="commentbox">
+                <label for="reason">Tell us the reason for your visit today:</label>
+                <textarea id="reason" name="reason"></textarea>
+            </div>
+
+            <!-- Random Codes -->
             <div class="randomcode">
                 <input
                     type="text"
                     id="codeentered"
                     name="randomcode"
                     placeholder="Enter characters"
+                    autocomplete="off"
                 >
                 <p id="codes"></p>
             </div>
@@ -342,7 +394,6 @@
             <div class="button">
                 <input type="submit" id="submit" value="Inquire" disabled>
             </div>
-
         </form>
 
     </main>
