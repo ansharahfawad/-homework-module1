@@ -245,12 +245,50 @@
             cursor: pointer;
         }
 
+        /* Selected Activities Display */
+        #activities main #displaySelected {
+            visibility: hidden;
+            margin: 0 auto;
+            width: 600px;
+            border: 2px solid #9ed034;
+            padding: 0.75em;
+            box-sizing: border-box;
+        }
+
+        #activities main #displaySelected #result,
+        #activities main #displaySelected #sendinfo {
+            display: inline-block;
+            margin: 0;
+        }
+
+        #activities main #result {
+            min-height: 50px;
+            width: 300px;
+            padding: 0;
+            vertical-align: top;
+        }
+
+        #activities main #result h4 {
+            margin-bottom: 1em;
+            font-size: 1.15em;
+        }
+
+        #activities main #result p {
+            margin-bottom: 1em;
+            font-size: 0.9em;
+        }
+
+        #activities main #sendinfo input[type="email"] {
+            width: 200px;
+            box-sizing: border-box;
+        }
+
     </style>
 
 </head>
 
 
-<body>
+<body id="activities">
 
     <header>
 
@@ -351,6 +389,23 @@
                 <td class="activity-cell">Sunset Camping</td>
             </tr>
         </table>
+
+        <!-- Selected Activities Display -->
+        <div id="displaySelected">
+            <div id="result">
+                <h4>My selected activities to enquire:</h4>
+            </div>
+
+            <div id="sendinfo">
+                <input
+                    type="email"
+                    id="contactEmail"
+                    placeholder="johndoe@gmail.com"
+                    aria-label="Your email address"
+                >
+                <button type="button" id="getInfo">Get Info</button>
+            </div>
+        </div>
 
     </main>
 
