@@ -1,4 +1,11 @@
-/* ------ RANDOM CODES ------ */
+// ----- RANDOM CODES -----
+
+var code = '';
+var getCode = '';
+var btnvalue;
+
+// Character set used to generate random codes
+var str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
 //Function to generate combination of characters
 function generateCode() {
@@ -19,8 +26,48 @@ function generateCode() {
 document.getElementById("codes").innerHTML = generateCode();
 
 //Disable Button
-function disableButton() {
-    document.getElementById("submit").disabled = true;
+// Determine when to enable or disable the button
+function disableButton(btnvalue) {
+    document.getElementById("submit").disabled = btnvalue;
+
+    if (btnvalue === true) {
+        // Set button and label color translucent
+        document.getElementById("submit").style.backgroundColor =
+            "rgba(73, 119, 209, 0.3)";
+
+        document.getElementById("submit").style.color =
+            "rgba(255, 255, 255, 0.5)";
+    } else {
+        // Set button and label color without transparency
+        document.getElementById("submit").style.backgroundColor =
+            "rgba(73, 119, 209, 1)";
+
+        document.getElementById("submit").style.color =
+            "rgba(255, 255, 255, 1)";
+    }
+}
+
+// Listen to user input code
+var codebox = document.getElementById("codeentered");
+
+codebox.addEventListener("input", evaluateCode);
+
+// Run function when user enters a character in the textbox
+function evaluateCode() {
+    // Get the code entered by the user
+    getCode = document.getElementById("codeentered").value;
+
+    // Remove any hidden characters
+    var charset1 = getCode.trim();
+    var charset2 = code.trim();
+
+    // Test whether the entered code matches the generated code
+    if (charset1.length === charset2.length &&
+        charset1 === charset2) {
+        disableButton(false);
+    } else {
+        disableButton(true);
+    }
 }
 
 //Activate function

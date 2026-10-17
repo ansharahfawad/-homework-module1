@@ -260,7 +260,7 @@
 </head>
 
 
-<body>
+<body id="contact" onload="disableButton(true)">
 
     <header>
 
@@ -330,12 +330,17 @@
 
             <!--Random Codes-->
             <div class="randomcode">
-                <input type="text" name="randomcode" placeholder="Enter characters">
+                <input
+                    type="text"
+                    id="codeentered"
+                    name="randomcode"
+                    placeholder="Enter characters"
+                >
                 <p id="codes"></p>
             </div>
 
             <div class="button">
-                <input type="submit" id="submit" value="Inquire">
+                <input type="submit" id="submit" value="Inquire" disabled>
             </div>
 
         </form>
