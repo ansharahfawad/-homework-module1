@@ -1,9 +1,26 @@
 $(document).ready(function () {
 
+    var modal = $("#selectedActivitiesModal");
+    var result = $("#result");
+
+    // Build the "<activity> at <cliff>" label for a clicked cell
+    function activityLabel(cell) {
+        var content = cell.text().trim();
+        var columnIndex = cell.index();
+
+        var cliffName = $(".activity-table tr:first th")
+            .eq(columnIndex)
+            .text()
+            .trim();
+
+        return content + " at " + cliffName;
+    }
+
     // When an activity cell is clicked
     $(".activity-cell").click(function () {
 
-        var content = $(this).text().trim();
+        var cell = $(this);
+        var content = cell.text().trim();
 
         // Ignore cells that are not available
         if (content === "Not Available") {
@@ -11,43 +28,28 @@ $(document).ready(function () {
         }
 
         // Toggle the selected appearance
-        $(this).toggleClass("selected");
+        cell.toggleClass("selected");
 
-        var displayBox = $("#displaySelected");
-        var result = $("#result");
-
-        // Identify the selected cell's column index
-        var columnIndex = $(this).index();
-
-        // Get the corresponding cliff name from the table header
-        var cliffName = $(".activity-table tr:first th")
-            .eq(columnIndex)
-            .text()
-            .trim();
+        var label = activityLabel(cell);
 
         // Check whether the cell is now selected
-        if ($(this).hasClass("selected")) {
-
-            // Show the display box
-            displayBox.css("visibility", "visible");
+        if (cell.hasClass("selected")) {
 
             // Add the activity name and cliff site
             result.append(
-                $("<p>").text(content + " at " + cliffName)
+                $("<p>").text(label)
             );
 
         } else {
 
-            // Remove the matching activity from the display list
+            // Remove the matching activity from the list
             result.find("p").filter(function () {
-                return $(this).text() === content + " at " + cliffName;
+                return $(this).text() === label;
             }).remove();
-
-            // Hide the display box when no activities remain
-            if (result.find("p").length === 0) {
-                displayBox.css("visibility", "hidden");
-            }
         }
+
+        // Show (or keep open) the modal with the current selections
+        modal.modal("show");
     });
 
 });

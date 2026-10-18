@@ -245,43 +245,21 @@
             }
         }
 
-        /* Selected Activities Display */
-        #activities main #displaySelected {
-            visibility: hidden;
-            margin: 0 auto;
-            width: 600px;
-            max-width: 100%;
-            border: 2px solid #9ed034;
-            padding: 0.75em;
-            box-sizing: border-box;
-        }
-
-        #activities main #displaySelected #result,
-        #activities main #displaySelected #sendinfo {
-            display: inline-block;
-            margin: 0;
-        }
-
-        #activities main #result {
-            min-height: 50px;
-            width: 300px;
-            padding: 0;
-            vertical-align: top;
-        }
-
-        #activities main #result h4 {
-            margin-bottom: 1em;
+        /* Selected Activities Modal */
+        #selectedActivitiesModal .modal-title {
             font-size: 1.15em;
         }
 
-        #activities main #result p {
-            margin-bottom: 1em;
-            font-size: 0.9em;
+        #selectedActivitiesModal #result p {
+            margin-bottom: 0.75em;
+            font-size: 0.95em;
         }
 
-        #activities main #sendinfo input[type="email"] {
-            width: 200px;
-            box-sizing: border-box;
+        #selectedActivitiesModal #result:empty::before {
+            content: "Click an activity in the table to add it here.";
+            color: #777;
+            font-size: 0.9em;
+            font-style: italic;
         }
 
         /* Partners */
@@ -598,23 +576,6 @@
         </table>
         </div>
 
-        <!-- Selected Activities Display -->
-        <div id="displaySelected">
-            <div id="result">
-                <h4>My selected activities to enquire:</h4>
-            </div>
-
-            <div id="sendinfo">
-                <input
-                    type="email"
-                    id="contactEmail"
-                    placeholder="johndoe@gmail.com"
-                    aria-label="Your email address"
-                >
-                <button type="button" id="getInfo">Get Info</button>
-            </div>
-        </div>
-
     </main>
 
     <!-- Partners: 1 on XS, 2 on SM, 3 on MD, 6 on LG and above -->
@@ -699,6 +660,42 @@
 
         </div>
     </footer>
+
+    <!-- Selected Activities Modal (Bootstrap) -->
+    <div
+        class="modal fade"
+        id="selectedActivitiesModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="selectedActivitiesModalLabel"
+        aria-hidden="true"
+    >
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="selectedActivitiesModalLabel">
+                        My selected activities to enquire:
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body" id="result"></div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">
+                        Back to Activities
+                    </button>
+                    <button type="button" class="btn btn-primary" id="getInfo" data-dismiss="modal">
+                        Get Info
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
     <!-- jQuery, Popper.js and Bootstrap 4 JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
