@@ -162,7 +162,10 @@
             line-height: 1.5;
         }
 
-        /* Contact Form Styling (not responsive yet, per instructions) */
+        /* Contact Form Styling — responsive via Bootstrap's .form-group /
+           .form-control for inputs, select and textarea. Only the bits
+           Bootstrap doesn't cover (random-code display, button sizing,
+           conditional field spacing) are styled here. */
         form {
             font-family: Arial, Helvetica, sans-serif;
             max-width: 600px;
@@ -170,41 +173,13 @@
         }
 
         form label {
-            display: block;
             font-weight: bold;
-            margin-bottom: 0.3em;
-            margin-top: 1em;
         }
 
-        form input[type="text"],
-        form input[type="email"] {
-            width: 100%;
-            padding: 0.6em;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        form .commentbox textarea {
-            width: 100%;
-            height: 100px;
-            padding: 0.6em;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
+        /* Random code row: stacks on narrow screens, sits inline from
+           the small breakpoint up */
         form .randomcode {
             margin-top: 1em;
-            display: flex;
-            align-items: center;
-            gap: 1em;
-        }
-
-        form .randomcode input[type="text"] {
-            width: auto;
-            flex: 1;
         }
 
         form .randomcode #codes {
@@ -213,10 +188,13 @@
             font-weight: bold;
             border-radius: 4px;
             margin: 0;
+            text-align: center;
         }
 
+        /* Submit button: full width on phones, fixed/compact from the
+           small breakpoint up */
         form .button .btn {
-            width: 8em;
+            width: 100%;
             height: 2.5em;
             font-size: 1.2em;
             font-weight: bold;
@@ -224,6 +202,12 @@
             border: none;
             margin-top: 1.5em;
             cursor: pointer;
+        }
+
+        @media (min-width: 576px) {
+            form .button .btn {
+                width: 8em;
+            }
         }
 
         form .button .btn:disabled {
@@ -234,25 +218,8 @@
             margin-right: 0.4em;
         }
 
-        form select {
-            width: 100%;
-            padding: 0.6em;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            margin-bottom: 0.5em;
-        }
-
         form .contact-field {
             margin-top: 0.5em;
-        }
-
-        form .contact-field input {
-            width: 100%;
-            padding: 0.6em;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
         }
 
         /* Keep conditional fields hidden until an option is selected */
@@ -527,52 +494,63 @@
 
 
         <form>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
 
             <!-- Contact preference dropdown -->
-            <label for="contactMethod">How should we contact you?</label>
-            <select id="contactMethod" name="contactMethod">
-                <option id="optionDefault" value="">Select One</option>
-                <option id="optionEmail" value="email">Email</option>
-                <option id="optionPhone" value="phone">Phone</option>
-            </select>
+            <div class="form-group">
+                <label for="contactMethod">How should we contact you?</label>
+                <select class="form-control" id="contactMethod" name="contactMethod">
+                    <option id="optionDefault" value="">Select One</option>
+                    <option id="optionEmail" value="email">Email</option>
+                    <option id="optionPhone" value="phone">Phone</option>
+                </select>
+            </div>
 
             <!-- Email field: hidden initially -->
-            <div id="emailField" class="contact-field" hidden>
+            <div id="emailField" class="form-group contact-field" hidden>
                 <label for="contactEmail">Enter your email:</label>
                 <input
                     type="email"
+                    class="form-control"
                     id="contactEmail"
                     name="contactEmail"
                 >
             </div>
 
             <!-- Phone field: hidden initially -->
-            <div id="phoneField" class="contact-field" hidden>
+            <div id="phoneField" class="form-group contact-field" hidden>
                 <label for="contactPhone">Enter your phone:</label>
                 <input
                     type="tel"
+                    class="form-control"
                     id="contactPhone"
                     name="contactPhone"
                 >
             </div>
 
-            <div class="commentbox">
+            <div class="form-group commentbox">
                 <label for="reason">Tell us the reason for your visit today:</label>
-                <textarea id="reason" name="reason"></textarea>
+                <textarea class="form-control" id="reason" name="reason" rows="4"></textarea>
             </div>
 
-            <!-- Random Codes -->
-            <div class="randomcode">
-                <input
-                    type="text"
-                    id="codeentered"
-                    name="randomcode"
-                    placeholder="Enter characters"
-                    autocomplete="off"
-                >
-                <p id="codes"></p>
+            <!-- Random Codes: stacked on phones, side-by-side from `sm` up -->
+            <div class="form-row randomcode align-items-center">
+                <div class="col-12 col-sm-6 mb-2 mb-sm-0">
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="codeentered"
+                        name="randomcode"
+                        placeholder="Enter characters"
+                        autocomplete="off"
+                    >
+                </div>
+                <div class="col-12 col-sm-6">
+                    <p id="codes" class="mb-0"></p>
+                </div>
             </div>
 
             <div class="button">
