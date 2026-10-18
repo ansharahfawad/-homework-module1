@@ -29,26 +29,30 @@
             color: #222;
         }
 
-        /* Header and hero background */
+        /* Header spacer (hero background image moved to body, see #cliffs) */
         header {
             width: 100%;
-            min-height: 400px;
-            padding-top: 3em;
-            background: lightgrey url("images/cliff_ocean.jpeg")
-                no-repeat center center;
-            background-size: cover;
-            background-position: center;
+            min-height: 275px;
+        }
+
+        /* Hero background image */
+        #cliffs {
+            background: no-repeat white url("images/cliff_ocean.jpeg");
+            background-size: 100% 400px;
         }
 
         .main-header {
             display: flex;
             align-items: stretch;
-            width: 700px;
+            width: 100%;
             max-width: 100%;
             min-height: 100px;
             height: 100px;
-            margin: 0 auto;
-            background-color: rgba(255, 255, 255, 0.85);
+            margin: 0;
+            background-color: rgba(38, 41, 61, 0.7);
+            position: sticky;
+            top: 0;
+            z-index: 1030;
         }
 
         /* Logo */
@@ -105,7 +109,7 @@
             width: 100%;
             height: 100px;
             padding: 0 8px;
-            color: #555;
+            color: rgb(255, 255, 255);
             font-size: 14px;
             white-space: nowrap;
             text-transform: uppercase;
@@ -265,7 +269,7 @@
             }
 
             .main-header {
-                width: 80%;
+                width: 100%;
                 min-height: 100px;
             }
 
@@ -321,7 +325,7 @@
             }
 
             .main-header {
-                width: 85%;
+                width: 100%;
             }
 
             .main-header .logo img {
@@ -361,9 +365,8 @@
 
 <body id="cliffs">
 
-    <!-- Header and navigation -->
-    <header>
-        <div class="main-header clearfix">
+    <!-- Navigation (sticky; sits above the hero header) -->
+    <div class="main-header clearfix">
 
             <div class="logo">
                 <a href="index.html">
@@ -375,7 +378,7 @@
             </div>
 
             <div class="main-menu">
-                <nav class="navbar navbar-expand-lg navbar-light">
+                <nav class="navbar navbar-expand-lg navbar-dark">
 
                     <button
                         class="navbar-toggler"
@@ -424,8 +427,10 @@
                 </nav>
             </div>
 
-        </div>
-    </header>
+    </div>
+
+    <!-- Header (hero background only) -->
+    <header></header>
 
     <main>
 
