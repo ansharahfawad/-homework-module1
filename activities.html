@@ -217,6 +217,34 @@
             cursor: pointer;
         }
 
+        /* Table can only shrink so far before text becomes unreadable;
+           after that point the .table-responsive wrapper around it lets
+           it scroll horizontally instead of squeezing further. */
+        @media (max-width: 991.98px) {
+            .activity-table th,
+            .activity-table td {
+                padding: 0.5em;
+                font-size: 0.8em;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .activity-table th,
+            .activity-table td {
+                padding: 0.4em;
+                font-size: 0.75em;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .activity-table th,
+            .activity-table td {
+                padding: 0.35em;
+                font-size: 0.7em;
+                white-space: nowrap;
+            }
+        }
+
         /* Selected Activities Display */
         #activities main #displaySelected {
             visibility: hidden;
@@ -522,6 +550,7 @@
             information, please contact them directly. For a list of activities, please refer to the table below:
         </p>
 
+        <div class="table-responsive">
         <table class="activity-table">
             <caption>Activities at the Cliffs</caption>
             <tr>
@@ -567,6 +596,7 @@
                 <td class="activity-cell">Sunset Camping</td>
             </tr>
         </table>
+        </div>
 
         <!-- Selected Activities Display -->
         <div id="displaySelected">
