@@ -29,16 +29,21 @@
             color: #222;
         }
 
-        /* Header spacer (hero background image moved to body, see #cliffs) */
+        /* Header spacer: reserves space for the hero image, which lives on
+           the body (#cliffs) so the sticky nav can float over it transparently.
+           min-height scales fluidly with viewport width (clamped between a
+           sensible floor and ceiling) so the hero is responsive at every size,
+           not just at a couple of fixed breakpoints. */
         header {
             width: 100%;
-            min-height: 275px;
+            min-height: clamp(200px, 34vw, 420px);
         }
 
-        /* Hero background image */
+        /* Hero background image: fluid height via clamp() keeps the image's
+           visible area proportional to the viewport instead of a fixed 400px. */
         #cliffs {
-            background: no-repeat white url("images/cliff_ocean.jpeg");
-            background-size: 100% 400px;
+            background: no-repeat center top white url("images/cliff_ocean.jpeg");
+            background-size: 100% clamp(200px, 34vw, 420px);
         }
 
         .main-header {
@@ -263,11 +268,6 @@
 
         /* Tablet and mobile navigation */
         @media (max-width: 991.98px) {
-            header {
-                min-height: 330px;
-                padding-top: 2em;
-            }
-
             .main-header {
                 width: 100%;
                 min-height: 100px;
@@ -318,12 +318,6 @@
 
         /* Extra-small screens */
         @media (max-width: 575.98px) {
-            header {
-                min-height: 300px;
-                padding-top: 1.5em;
-                background-position: center;
-            }
-
             .main-header {
                 width: 100%;
             }
